@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Foxy</string>
+    <string name="default_web_client_id">104168650295-04ak845sdvm0rmc0j6jo1ritp28bk72s.apps.googleusercontent.com</string>
+
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+
+    <string name="facebook_app_id">1099120928010039</string>
+    <string name="fb_login_protocol_scheme">fb1099120928010039</string>
+    <string name="facebook_client_token">a7WBYjOMEOJR46zI8qwbGYthkS4=</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
