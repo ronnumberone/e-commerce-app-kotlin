@@ -3,7 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#459DE4</color>
-    <color name="red">#FF0000</color>
+    <color name="red">#B51919</color>
+    <color name="orange">#ef6344</color>
     <color name="second_color">#e7ecf0</color>
     <color name="main_color">#326e51</color>
     <color name="background_color">#f9f9fa</color>

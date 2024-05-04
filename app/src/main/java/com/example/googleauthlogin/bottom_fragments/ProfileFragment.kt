@@ -10,15 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
-import androidx.core.view.marginTop
-import androidx.core.view.setMargins
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.example.googleauthlogin.AddProductActivity
+import com.example.googleauthlogin.admin.AddProductActivity
 import com.example.googleauthlogin.MainActivity
-import com.example.googleauthlogin.ProductManagementActivity
+import com.example.googleauthlogin.PendingActivity
+import com.example.googleauthlogin.admin.ProductManagementActivity
 import com.example.googleauthlogin.R
+import com.example.googleauthlogin.ShippingActivity
 import com.example.googleauthlogin.database.UserHelper
 import com.example.googleauthlogin.databinding.FragmentProfileBinding
 import com.example.googleauthlogin.login.LoginActivity
@@ -81,8 +79,15 @@ class ProfileFragment : Fragment() {
         }
 
 
-        CoroutineScope(Dispatchers.Main).launch {
-            if( userHelper.isAdmin()) {
+//        CoroutineScope(Dispatchers.Main).launch {
+//            if( userHelper.isAdmin()) {
+//                binding.productManagementBtn.visibility = View.VISIBLE
+//                binding.addProductBtn.visibility = View.VISIBLE
+//            }
+//        }
+
+        userHelper.isAdmin { isAdmin ->
+            if( isAdmin) {
                 binding.productManagementBtn.visibility = View.VISIBLE
                 binding.addProductBtn.visibility = View.VISIBLE
             }
@@ -90,6 +95,14 @@ class ProfileFragment : Fragment() {
 
         binding.addProductBtn.setOnClickListener{
             startActivity(Intent(requireContext(), AddProductActivity::class.java))
+        }
+
+        binding.pendingBtn.setOnClickListener {
+            startActivity(Intent(requireContext(), PendingActivity::class.java))
+        }
+
+        binding.shippingBtn.setOnClickListener {
+            startActivity(Intent(requireContext(), ShippingActivity::class.java))
         }
 
         if (user != null) {

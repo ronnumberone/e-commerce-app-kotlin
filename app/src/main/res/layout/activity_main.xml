@@ -32,9 +32,9 @@
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="63dp"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/second_color"
+        android:backgroundTint="@color/main_color"
         app:contentInsetEnd="0dp"
         app:contentInsetStart="0dp"
         app:fabAlignmentMode="center"
@@ -49,7 +49,7 @@
             app:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
             app:itemIconTint="@color/menu_item"
-            app:itemRippleColor="#ef8894"
+            app:itemRippleColor="@color/orange"
             app:itemTextColor="@color/menu_item"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_menu" />

@@ -1,4 +1,4 @@
-package com.example.googleauthlogin
+package com.example.googleauthlogin.admin
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -37,7 +37,7 @@ class UpdateProductActivity : AppCompatActivity() {
 
         val productId = intent.getStringExtra("productId")
         var productName = intent.getStringExtra("productName")
-        var productCost = intent.getLongExtra("productCost", 0)
+        var productCost = intent.getDoubleExtra("productCost", 0.0)
         var productDescription = intent.getStringExtra("productDescription")
         var category = intent.getStringExtra("category")
         var productImg = intent.getStringExtra("productImg")
@@ -104,7 +104,7 @@ class UpdateProductActivity : AppCompatActivity() {
                                 .addOnSuccessListener { url->
                                     val imgUrl = url.toString()
                                     productName = binding.productName.text.toString()
-                                    productCost = binding.productCost.text.toString().toLong()
+                                    productCost = binding.productCost.text.toString().toDouble()
                                     productDescription = binding.productDescription.text.toString()
                                     productHelper.saveProductToDatabase(productId, productName!!, productCost, productDescription!!, getCategory(), imgUrl, createAt)
                                     startActivity(Intent(this, ProductManagementActivity::class.java))

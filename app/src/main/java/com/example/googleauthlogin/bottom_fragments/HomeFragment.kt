@@ -2,11 +2,12 @@ package com.example.googleauthlogin.bottom_fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Telephony.Sms.Intents
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.ImageSlider
@@ -14,10 +15,11 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.googleauthlogin.ProductDetailActivity
 import com.example.googleauthlogin.R
+import com.example.googleauthlogin.SearchActivity
 import com.example.googleauthlogin.adapter.ProductAdapter
-import com.example.googleauthlogin.adapter.ProductManagementAdapter
 import com.example.googleauthlogin.database.ProductHelper
 import com.example.googleauthlogin.databinding.FragmentHomeBinding
+import com.example.googleauthlogin.model.Product
 
 class HomeFragment : Fragment() {
 
@@ -54,7 +56,7 @@ class HomeFragment : Fragment() {
                 override fun onItemClick(
                     productId: String,
                     productName: String,
-                    productCost: Long,
+                    productCost: Double,
                     productDescription: String,
                     category: String,
                     productImg: String,
@@ -73,6 +75,34 @@ class HomeFragment : Fragment() {
             })
             binding.rvProduct.adapter = adapt
         }
+
+        binding.searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                binding.searchView.isIconified = true
+            }
+        }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Xử lý tìm kiếm khi người dùng nhấn nút tìm kiếm trên bàn phím hoặc trong giao diện SearchView
+                if (!query.isNullOrBlank()) {
+                    productHelper.searchForProduct(query) { list ->
+//                        val adapt = ProductAdapter(list)
+//                        Toast.makeText(requireContext(), list!!.size.toString(), Toast.LENGTH_LONG).show()
+//                        binding.rvProduct.adapter = adapt
+                        val productList: ArrayList<Product> = list
+                        val intent = Intent(requireContext(), SearchActivity::class.java)
+                        intent.putExtra("productList", productList)
+                        startActivity(intent)
+                    }
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
 
         return view
     }

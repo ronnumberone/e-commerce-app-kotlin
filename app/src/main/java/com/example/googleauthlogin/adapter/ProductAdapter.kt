@@ -12,9 +12,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.googleauthlogin.R
 import com.example.googleauthlogin.model.Product
+import java.io.Serializable
 import java.util.concurrent.Executors
 
-class ProductAdapter(var list:ArrayList<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
+class ProductAdapter(var list: ArrayList<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
 
     private lateinit var mListener: onItemClickListener
 
@@ -22,7 +23,7 @@ class ProductAdapter(var list:ArrayList<Product>) : RecyclerView.Adapter<Product
         fun onItemClick(
             productId: String,
             productName: String,
-            productCost: Long,
+            productCost: Double,
             productDescription: String,
             category: String,
             productImg: String,

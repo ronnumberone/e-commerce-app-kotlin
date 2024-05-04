@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.example.googleauthlogin.bottom_fragments.CartFragment
 import com.example.googleauthlogin.database.UserHelper
 import com.example.googleauthlogin.databinding.ActivityMainBinding
 import com.example.googleauthlogin.databinding.ActivityProductDetailBinding
@@ -26,7 +27,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
         var productId = intent.getStringExtra("productId")
         var productName = intent.getStringExtra("productName")
-        var productCost = intent.getLongExtra("productCost", 0)
+        var productCost = intent.getDoubleExtra("productCost", 0.0)
         var productDescription = intent.getStringExtra("productDescription")
         var category = intent.getStringExtra("category")
         var productImg = intent.getStringExtra("productImg")
@@ -50,9 +51,9 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         binding.addToCartBtn.setOnClickListener {
-            val totalCost = productCost * quantity
-            userHelper.addToCart(productId!!, productName!!, productImg!!, totalCost, quantity)
+            userHelper.addToCart(productId!!, productName!!, productImg!!, productCost, quantity)
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         binding.backBtn.setOnClickListener {
@@ -62,6 +63,7 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.productName.setText(productName)
         binding.productCost.setText("$" + productCost.toString())
         binding.productDescription.setText(productDescription)
+        binding.category.setText(category)
 
         var image: Bitmap? = null
         val executorService = Executors.newSingleThreadExecutor()

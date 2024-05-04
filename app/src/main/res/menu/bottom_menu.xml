@@ -4,25 +4,25 @@
     <item
         android:id="@+id/bottom_home"
         android:icon="@drawable/home"
-        android:title="Home" />
+        android:title="" />
 
     <item
         android:id="@+id/bottom_favorites"
         android:icon="@drawable/heart"
-        android:title="Favorites"/>
+        android:title=""/>
 
     <item
         android:id="@+id/bottom_cart"
         android:icon="@drawable/cart"
-        android:title="Cart" />
+        android:title="" />
 
     <item
         android:id="@+id/bottom_Notification"
         android:icon="@drawable/notification"
-        android:title="Notification" />
+        android:title="" />
 
     <item
         android:id="@+id/bottom_profile"
         android:icon="@drawable/profile"
-        android:title="Profile" />
+        android:title="" />
 </menu>

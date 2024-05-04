@@ -1,17 +1,14 @@
-package com.example.googleauthlogin
+package com.example.googleauthlogin.admin
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.googleauthlogin.R
+import com.example.googleauthlogin.MainActivity
 import com.example.googleauthlogin.adapter.ProductManagementAdapter
 import com.example.googleauthlogin.database.ProductHelper
-import com.example.googleauthlogin.databinding.ActivityMainBinding
 import com.example.googleauthlogin.databinding.ActivityProductManagementBinding
 import com.example.googleauthlogin.model.Product
 
@@ -30,10 +27,9 @@ class ProductManagementActivity : AppCompatActivity() {
 
         productHelper = ProductHelper()
 
-        binding.rvProduct.layoutManager = LinearLayoutManager(this)
-        binding.rvProduct.setHasFixedSize(true)
-
         productHelper.getAllProducts { list ->
+            binding.rvProduct.layoutManager = LinearLayoutManager(this)
+            binding.rvProduct.setHasFixedSize(true)
             val adapt = ProductManagementAdapter(list)
             adapt.setOnDeleteItemClickListener(object : ProductManagementAdapter.onDeleteClickListener {
                 @SuppressLint("SuspiciousIndentation")
@@ -54,7 +50,7 @@ class ProductManagementActivity : AppCompatActivity() {
                 override fun onUpdateClick(
                     productId: String,
                     productName: String,
-                    productCost: Long,
+                    productCost: Double,
                     productDescription: String,
                     category: String,
                     productImg: String,
@@ -75,7 +71,9 @@ class ProductManagementActivity : AppCompatActivity() {
         }
 
         binding.backBtn.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("loadFragment", "profileFragment")
+            startActivity(intent)
         }
     }
 }

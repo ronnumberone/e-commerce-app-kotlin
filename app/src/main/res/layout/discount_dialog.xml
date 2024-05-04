@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="30dp"
+    android:paddingVertical="10dp">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/freeship50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Freeship 50%" />
+
+        <RadioButton
+            android:id="@+id/freeship20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Freeship 20%" />
+
+    </RadioGroup>
+
+</LinearLayout>

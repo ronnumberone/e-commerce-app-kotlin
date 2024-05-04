@@ -98,66 +98,55 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:layout_marginTop="7dp"
-                        android:src="@drawable/pending" />
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/pendingBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Pening"
-                        android:textSize="14sp" />
+                        android:drawableTop="@drawable/pending"
+                        android:text="Pending"
+                        android:textAllCaps="false"
+                        android:background="@android:color/transparent"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/shipping" />
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/shippingBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:drawableTop="@drawable/shipping"
                         android:text="Shipping"
-                        android:textSize="14sp" />
+                        android:textAllCaps="false"
+                        android:drawablePadding="-20dp"
+                        android:background="@android:color/transparent"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginTop="5dp"
-                        android:src="@drawable/shipped" />
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
+                        android:drawableTop="@drawable/shipped"
                         android:text="Shipped"
-                        android:textSize="14sp" />
+                        android:textAllCaps="false"
+                        android:background="@android:color/transparent"/>
 
                 </LinearLayout>
 
@@ -168,18 +157,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginTop="7dp"
-                        android:src="@drawable/rate" />
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@drawable/rate"
                         android:text="Rate"
-                        android:textSize="14sp" />
+                        android:textAllCaps="false"
+                        android:background="@android:color/transparent"/>
 
                 </LinearLayout>
 

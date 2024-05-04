@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.Date
+import java.util.Locale
 import java.util.UUID
 
 class ProductHelper {
@@ -23,7 +24,7 @@ class ProductHelper {
     private val currentUser: FirebaseUser? = auth.currentUser
     private val db: DatabaseReference = FirebaseDatabase.getInstance().getReference("Product")
 
-    fun saveProductToDatabase(productId: String,productName: String, productCost: Long, productDescription: String, category: String, productImg: String, createAt: Long) {
+    fun saveProductToDatabase(productId: String,productName: String, productCost: Double, productDescription: String, category: String, productImg: String, createAt: Long) {
         val product = Product(productId, productName, productCost, productDescription, category, productImg, createAt)
 
          db.child(productId).setValue(product)
@@ -64,4 +65,28 @@ class ProductHelper {
                    Log.d("ProductHelper", "Delete product failed")
                }
     }
+
+    fun searchForProduct(productName: String, callback: (ArrayList<Product>) -> Unit) {
+        val list: ArrayList<Product> = ArrayList()
+
+        db.orderByChild("productName")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (snapshot in dataSnapshot.children) {
+                        val data = snapshot.getValue(Product::class.java)
+                        data?.let {
+                            if (it.productName.lowercase().contains(productName.lowercase())) {
+                                list.add(it)
+                            }
+                        }
+                    }
+                    callback(list)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+
+                }
+            })
+    }
+
 }

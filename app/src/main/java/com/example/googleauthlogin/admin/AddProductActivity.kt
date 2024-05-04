@@ -1,29 +1,16 @@
-package com.example.googleauthlogin
+package com.example.googleauthlogin.admin
 
-import android.annotation.SuppressLint
-import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.googleauthlogin.database.ProductHelper
 import com.example.googleauthlogin.databinding.ActivityAddProductBinding
-import com.example.googleauthlogin.databinding.ActivityMainBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.io.File
-import java.sql.Date
-import java.text.SimpleDateFormat
-import java.util.Locale
-import java.util.UUID
-import kotlin.math.log
 
 class AddProductActivity : AppCompatActivity() {
 
@@ -62,7 +49,7 @@ class AddProductActivity : AppCompatActivity() {
             val productId = db.push().key!!
             val productName = binding.productName.text.toString()
             val productDescription = binding.productDescription.text.toString()
-            val productCost = binding.productCost.text.toString().toLong()
+            val productCost = binding.productCost.text.toString().toDouble()
             val category = getCategory()
 
             imageUri?.let {

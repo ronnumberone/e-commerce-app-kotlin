@@ -21,7 +21,7 @@ class ProductManagementAdapter(var list:ArrayList<Product>) : RecyclerView.Adapt
 
     interface onDeleteClickListener {
         fun onDeleteClick(id: String)
-        fun onUpdateClick(productId: String, productName: String, productCost: Long, productDescription: String, category: String, productImg: String, createAt: Long)
+        fun onUpdateClick(productId: String, productName: String, productCost: Double, productDescription: String, category: String, productImg: String, createAt: Long)
     }
 
     fun setOnDeleteItemClickListener(listener: onDeleteClickListener) {

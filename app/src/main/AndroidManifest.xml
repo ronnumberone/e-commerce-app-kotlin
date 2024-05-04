@@ -15,16 +15,28 @@
         android:theme="@style/Theme.GoogleAuthLogin"
         tools:targetApi="31">
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShippingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PendingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductDetailActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".UpdateProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductManagementActivity"
+            android:name=".admin.UpdateProductActivity"
             android:exported="false" />
         <activity
-            android:name=".AddProductActivity"
+            android:name=".admin.ProductManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".login.FacebookActivity"

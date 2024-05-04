@@ -1,42 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@drawable/gradient_login"
     tools:context=".login.LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:src="@drawable/login_panel"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
-        android:layout_centerInParent="true"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/border"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/radius_login"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="35dp"
+        android:layout_marginBottom="-25dp"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="#080359"
+            android:layout_marginBottom="5dp"/>
 
-        <Button
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foxy"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="@color/main_color"
+            android:layout_marginBottom="40dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:paddingHorizontal="32dp"
             android:id="@+id/signInButton"
+            android:layout_width="330dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="60dp"
+            android:background="@drawable/radius_login"
+            android:text="Continue with Google"
             android:textAllCaps="false"
-            android:layout_width="290dp"
-            android:layout_height="50dp"
-            android:background="@color/blue"
-            android:text="Sign up with Google"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/google"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:paddingHorizontal="30dp"
             android:id="@+id/fbAuthButton"
+            android:layout_width="330dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="60dp"
+            android:background="@drawable/radius_login"
+            android:text="Continue with Facebook"
             android:textAllCaps="false"
-            android:layout_width="290dp"
-            android:layout_height="50dp"
-            android:background="@color/blue"
-            android:text="Sign up with Facebook"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:drawableStart="@drawable/facebook"
+            android:backgroundTint="#1877f2"/>
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
       
