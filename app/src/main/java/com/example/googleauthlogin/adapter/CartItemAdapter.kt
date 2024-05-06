@@ -35,14 +35,7 @@ class CartItemAdapter (var list:ArrayList<CartItem>) : RecyclerView.Adapter<Cart
         return totalPrice
     }
 
-    inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        init {
-//            itemView.findViewById<ImageButton>(R.id.deleteBtn).setOnClickListener {
-//                val id = list[adapterPosition].cartItemId
-//                clickListener?.onDeleteClick(id)
-//            }
-        }
-    }
+    inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)

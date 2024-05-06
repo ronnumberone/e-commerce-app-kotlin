@@ -211,6 +211,20 @@
                 android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/notificationBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_background"
+                android:drawableStart="@drawable/account"
+                android:drawableEnd="@drawable/right_arrow"
+                android:drawablePadding="10dp"
+                android:text="Notification"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

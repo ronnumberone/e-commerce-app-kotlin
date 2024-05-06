@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.googleauthlogin.PendingActivity
 import com.example.googleauthlogin.admin.ProductManagementActivity
 import com.example.googleauthlogin.R
 import com.example.googleauthlogin.ShippingActivity
+import com.example.googleauthlogin.admin.NotificationManagementActivity
 import com.example.googleauthlogin.database.UserHelper
 import com.example.googleauthlogin.databinding.FragmentProfileBinding
 import com.example.googleauthlogin.login.LoginActivity
@@ -78,23 +80,20 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(requireContext(), ProductManagementActivity::class.java))
         }
 
-
-//        CoroutineScope(Dispatchers.Main).launch {
-//            if( userHelper.isAdmin()) {
-//                binding.productManagementBtn.visibility = View.VISIBLE
-//                binding.addProductBtn.visibility = View.VISIBLE
-//            }
-//        }
-
         userHelper.isAdmin { isAdmin ->
             if( isAdmin) {
                 binding.productManagementBtn.visibility = View.VISIBLE
                 binding.addProductBtn.visibility = View.VISIBLE
+                binding.notificationBtn.visibility = View.VISIBLE
             }
         }
 
         binding.addProductBtn.setOnClickListener{
             startActivity(Intent(requireContext(), AddProductActivity::class.java))
+        }
+
+        binding.notificationBtn.setOnClickListener{
+            startActivity(Intent(requireContext(), NotificationManagementActivity::class.java))
         }
 
         binding.pendingBtn.setOnClickListener {
@@ -153,7 +152,7 @@ class ProfileFragment : Fragment() {
                 startActivity(intent)
             } else {
                 // Xử lý khi có lỗi xảy ra trong quá trình đăng xuất
-                Toast.makeText(requireContext(), "Đã xảy ra lỗi khi đăng xuất", Toast.LENGTH_SHORT).show()
+                Log.e("Login fail", "Login fail")
             }
         }
     }
