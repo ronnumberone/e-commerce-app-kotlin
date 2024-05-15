@@ -1,11 +1,9 @@
 package com.example.googleauthlogin.login
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.googleauthlogin.MainActivity
 import com.example.googleauthlogin.R
 import com.example.googleauthlogin.database.UserHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -13,7 +11,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import java.util.Date
 
 class GoogleActivity : AppCompatActivity() {
 
@@ -61,23 +58,13 @@ class GoogleActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val currentUser = auth.currentUser
-//                    if (currentUser != null) {
-//                        val userName = currentUser.displayName
-//                        val userEmail = currentUser.email
-//                        val userImgUrl = currentUser.photoUrl.toString()
-//                        val createAt = Date().time
-//
-//                        userHelper.addUserToDatabase(userName, userImgUrl, userEmail, "customer", createAt)
-
                         Toast.makeText(
                             this,
                             "Signed in as ${currentUser?.displayName}",
                             Toast.LENGTH_SHORT
                         )
                             .show()
-//                    }
                     val intent = Intent(this, LoginActivity::class.java)
-//                    intent.putExtra("loadFragment", "profileFragment")
                     startActivity(intent)
                     finish()
                 } else {

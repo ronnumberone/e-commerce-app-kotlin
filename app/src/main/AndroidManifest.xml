@@ -15,6 +15,12 @@
         android:theme="@style/Theme.GoogleAuthLogin"
         tools:targetApi="31">
         <activity
+            android:name=".IntroductionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.NotificationManagementActivity"
             android:exported="false" />
         <activity

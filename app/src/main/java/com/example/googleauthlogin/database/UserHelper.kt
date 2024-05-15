@@ -96,6 +96,75 @@ class UserHelper {
         }
     }
 
+    fun addToFavorite(
+        productId: String,
+        productName: String,
+        productCost: Double,
+        productDescription: String,
+        category: String,
+        productImg: String,
+        createAt: Long
+    ) {
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val cartRef = db.child(userId).child("favorite")
+            cartRef.child(productId).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (!snapshot.exists()) {
+                        // Sản phẩm chưa có trong favorite
+                        val product = Product(productId, productName, productCost, productDescription, category, productImg, createAt)
+                        cartRef.child(productId).setValue(product)
+                        Log.d("UserHelper", "Added to favorite")
+                    } else {
+                        Log.d("UserHelper", "Product exists")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("UserHelper", error.toString())
+                }
+            })
+        }
+    }
+
+    fun getFavorite(callback: (ArrayList<Product>) -> Unit) {
+        val list: ArrayList<Product> = ArrayList()
+
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val dbCartRef = db.child(userId).child("favorite")
+            dbCartRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (snap in snapshot.children) {
+                            val data = snap.getValue(Product::class.java)
+                            data?.let { list.add(it) }
+                        }
+                        callback(list)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+        }
+    }
+
+    fun deleteCartById(cartItemId: String) {
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val cartRef = db.child(userId).child("cart")
+            cartRef.child(cartItemId).removeValue()
+                .addOnSuccessListener {
+                    Log.d("UserHelper", "Cart item deleted successfully")
+                }
+                .addOnFailureListener { error ->
+                    Log.d("UserHelper", "Failed to delete cart item: $error")
+                }
+        }
+    }
+
     fun getCart(callback: (ArrayList<CartItem>) -> Unit) {
         val list: ArrayList<CartItem> = ArrayList()
 
@@ -114,7 +183,7 @@ class UserHelper {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    // Xử lý lỗi nếu cần
+
                 }
             })
         }
@@ -142,7 +211,7 @@ class UserHelper {
                 val isAdmin = user?.role == "admin"
                 callback(isAdmin)
             }.addOnFailureListener { e ->
-                Log.e("firebase", "Error getting data", e)
+                Log.e("UserHelper", "Error getting isAdmin", e)
                 callback(false)
             }
         } else {

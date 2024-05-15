@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PrivacyPolicyActivity"
+    android:background="@color/background_color">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/main_color"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:text="Privacy Policy"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Information We Collect"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:textAllCaps="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2sp"
+                android:layout_marginBottom="10dp"
+                android:text="When you use the Foxy app, we may collect the following types of information:\nPersonal Information: Including your name, email address, shipping address, and phone number when you create an account or make a purchase.\nTransaction Information: Including information about your purchase transactions, such as purchase history and payment information.\nDevice Information: Including IP address, browser type, operating system, and similar data about the device you use to access our app."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How We Use Your Information"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="5dp"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2sp"
+                android:layout_marginBottom="10dp"
+                android:text="We use the information you provide for the following purposes:
+\nTo confirm and process your orders.
+\nTo provide customer service and technical support.
+\nTo provide information about products, promotions, and updates from Foxy.
+\nTo improve your experience when using our app.
+\nTo carry out other purposes as notified to you when collecting information or with your consent."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sharing Your Information"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="5dp"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2sp"
+                android:layout_marginBottom="10dp"
+                android:text="We may share your information with third parties in the following cases:
+\nWith shipping partners to deliver your orders to you.
+\nWith payment partners to confirm and process your payments.
+\nWith third-party service providers who assist us in operating the app and providing services to you."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Protecting Your Information"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="5dp"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2sp"
+                android:layout_marginBottom="10dp"
+                android:text="We are committed to protecting your personal information and have implemented appropriate security measures to prevent unauthorized access, use, disclosure, or modification of your information."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Changes to the Privacy Policy"
+                android:textAllCaps="true"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2sp"
+                android:text="We may update this Privacy Policy over time without prior notice. Any changes will be posted on our app, so please check regularly for the latest information."/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.googleauthlogin.bottom_fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.googleauthlogin.PaymentActivity
-import com.example.googleauthlogin.R
 import com.example.googleauthlogin.adapter.CartItemAdapter
-import com.example.googleauthlogin.adapter.ProductAdapter
 import com.example.googleauthlogin.database.UserHelper
 import com.example.googleauthlogin.databinding.FragmentCartBinding
-import com.example.googleauthlogin.databinding.FragmentHomeBinding
 
 
 class CartFragment : Fragment() {
@@ -31,18 +29,30 @@ class CartFragment : Fragment() {
         binding = FragmentCartBinding.inflate(inflater, container, false)
         val view: View = binding.root
 
+        if (!isAdded) {
+            return view
+        }
+
         userHelper = UserHelper()
 
-        binding.rvCartItem.layoutManager = GridLayoutManager(requireContext(), 1, LinearLayoutManager.VERTICAL, false)
-        binding.rvCartItem.setHasFixedSize(true)
+        val context = requireContext()
 
+        binding.rvCartItem.setHasFixedSize(true)
         userHelper.getCart { list ->
             val adapt = CartItemAdapter(list)
+            binding.rvCartItem.layoutManager = GridLayoutManager(context, 1, LinearLayoutManager.VERTICAL, true)
+            adapt.setOnClickListener(object : CartItemAdapter.onClickListener {
+                @SuppressLint("NotifyDataSetChanged")
+                override fun onDeleteClick(cartItemId: String) {
+                    userHelper.deleteCartById(cartItemId)
+                    list.clear()
+                }
+            })
             binding.totalCost.setText("$" + adapt.calculateTotalPrice().toString())
             binding.rvCartItem.adapter = adapt
         }
 
-        binding.buyBtn.setOnClickListener {
+        binding.buyBtnB.setOnClickListener {
             val intent = Intent(requireContext(), PaymentActivity::class.java)
             val totalCost = binding.totalCost.text.split("$")[1].toDouble()
             intent.putExtra("totalCost", totalCost)

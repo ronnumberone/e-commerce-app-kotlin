@@ -46,17 +46,27 @@ class PaymentActivity : AppCompatActivity() {
             selectPaymentMethod()
         }
 
-        binding.buyBtn.setOnClickListener {
+        binding.buyBtnA.setOnClickListener {
             userHelper.getCart { list ->
-                val receiverName = binding.nameEdt.text.toString()
-                val address = binding.addressEdt.text.toString()
-                val email = binding.emailEdt.text.toString()
-                val phoneNumber = binding.phoneNumberEdt.text.toString()
-                val totalPayment = binding.totalPayment1.text.split("$")[1].toDouble()
-                orderHelper.saveOrderToPending(receiverName, address, email, phoneNumber, totalPayment, list)
-                userHelper.clearCart()
-                startActivity(Intent(this, PendingActivity::class.java))
-                finish()
+                if (list.size > 0) {
+                    val receiverName = binding.nameEdt.text.toString()
+                    val address = binding.addressEdt.text.toString()
+                    val email = binding.emailEdt.text.toString()
+                    val phoneNumber = binding.phoneNumberEdt.text.toString()
+                    val totalPayment = binding.totalPayment1.text.split("$")[1].toDouble()
+                    orderHelper.saveOrderToPending(
+                        receiverName,
+                        address,
+                        email,
+                        phoneNumber,
+                        totalPayment,
+                        list
+                    )
+                    userHelper.clearCart()
+                    val intent = Intent(this, PendingActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
 
@@ -84,8 +94,10 @@ class PaymentActivity : AppCompatActivity() {
                 binding.voucherBtn.setTextColor(ContextCompat.getColor(this, R.color.orange))
                 discountFee = shippingFee * 0.5
                 binding.discountFee.text = "- $" + discountFee.toString()
-                binding.totalPayment1.text = "$" + (totalCost + shippingFee - discountFee).toString()
-                binding.totalPayment2.text = "$" + (totalCost + shippingFee - discountFee).toString()
+                binding.totalPayment1.text =
+                    "$" + (totalCost + shippingFee - discountFee).toString()
+                binding.totalPayment2.text =
+                    "$" + (totalCost + shippingFee - discountFee).toString()
                 dialog.dismiss()
             }
         }
@@ -96,8 +108,10 @@ class PaymentActivity : AppCompatActivity() {
                 binding.voucherBtn.setTextColor(ContextCompat.getColor(this, R.color.orange))
                 discountFee = shippingFee * 0.2
                 binding.discountFee.text = "- $" + discountFee.toString()
-                binding.totalPayment1.text = "$" + (totalCost + shippingFee - discountFee).toString()
-                binding.totalPayment2.text = "$" + (totalCost + shippingFee - discountFee).toString()
+                binding.totalPayment1.text =
+                    "$" + (totalCost + shippingFee - discountFee).toString()
+                binding.totalPayment2.text =
+                    "$" + (totalCost + shippingFee - discountFee).toString()
                 dialog.dismiss()
             }
         }

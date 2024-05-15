@@ -5,9 +5,9 @@
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
 
-    <string name="facebook_app_id">1099120928010039</string>
-    <string name="fb_login_protocol_scheme">fb1099120928010039</string>
-    <string name="facebook_client_token">a7WBYjOMEOJR46zI8qwbGYthkS4=</string>
+    <string name="facebook_app_id">1786480331873112</string>
+    <string name="fb_login_protocol_scheme">fb1786480331873112</string>
+    <string name="facebook_client_token">acd7a15fb5c57abeb8a3de685a434efc9b1acd20b8e9323c98f98a555ef7005e=</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

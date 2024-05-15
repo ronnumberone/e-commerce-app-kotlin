@@ -22,7 +22,7 @@ class NotificationHelper {
     fun addNotification(title: String, content: String) {
         val currentTime = java.util.Date().time
 
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val sdf = SimpleDateFormat("HH:mm:ss MM-dd-yyyy", Locale.getDefault())
         val createAt = sdf.format(Date(currentTime))
 
         val notification = Notification(title, content, currentTime)

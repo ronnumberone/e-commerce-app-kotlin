@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.googleauthlogin.MainActivity
+import com.example.googleauthlogin.database.UserHelper
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -16,13 +17,12 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 
 class FacebookActivity : AppCompatActivity() {
 
     private lateinit var callbackManager: CallbackManager
     private lateinit var auth: FirebaseAuth
+    private lateinit var userHelper: UserHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,19 +39,11 @@ class FacebookActivity : AppCompatActivity() {
                 }
 
                 override fun onCancel() {
-                    Toast.makeText(
-                        this@FacebookActivity,
-                        "ccc",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+
                 }
 
                 override fun onError(exception: FacebookException) {
-                    Toast.makeText(
-                        this@FacebookActivity,
-                        "dd",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+
                 }
             })
     }
@@ -59,7 +51,6 @@ class FacebookActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Pass the activity result back to the Facebook SDK
         callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -69,18 +60,18 @@ class FacebookActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    val currentUser = Firebase.auth.currentUser
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(
                         this,
-                        "Authentication successfully.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                        "Signed in as ${currentUser?.displayName}",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
-//                    startActivity(Intent(this, LoginActivity::class.java))
-//                    finish()
+                    finish()
                 } else {
-                    // If sign in fails, display a message to the user.
                     Toast.makeText(
                         this,
                         "Authentication failed.",

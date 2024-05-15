@@ -28,6 +28,8 @@ class ProductManagementActivity : AppCompatActivity() {
         productHelper = ProductHelper()
 
         productHelper.getAllProducts { list ->
+            binding.totalItem.text = list.size.toString()
+
             binding.rvProduct.layoutManager = LinearLayoutManager(this)
             binding.rvProduct.setHasFixedSize(true)
             val adapt = ProductManagementAdapter(list)

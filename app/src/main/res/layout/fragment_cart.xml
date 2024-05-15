@@ -132,7 +132,7 @@
                     android:textColor="#B51919"/>
 
                 <Button
-                    android:id="@+id/buyBtn"
+                    android:id="@+id/buyBtnB"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:backgroundTint="#ef6344"

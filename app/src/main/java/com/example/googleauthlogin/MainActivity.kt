@@ -56,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         if (loadFragment == "profileFragment") {
             replaceFragment(ProfileFragment())
             bottomNavigationView.selectedItemId = R.id.bottom_profile
+        } else if (loadFragment == "cartFragment") {
+            replaceFragment(CartFragment())
+            bottomNavigationView.selectedItemId = R.id.bottom_cart
         } else {
             replaceFragment(HomeFragment())
         }

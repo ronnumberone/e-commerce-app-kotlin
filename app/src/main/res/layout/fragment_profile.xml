@@ -43,10 +43,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:backgroundTint="#ffffff"
-                    android:elevation="10dp"
+                    android:backgroundTint="@color/orange"
+                    android:elevation="20dp"
                     android:text="Log in"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/white"
                     android:textSize="25dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/profile_image"
@@ -188,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_background"
-                android:drawableStart="@drawable/account"
+                android:drawableStart="@drawable/management"
                 android:drawableEnd="@drawable/right_arrow"
                 android:drawablePadding="10dp"
                 android:text="Product Management"
@@ -202,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_background"
-                android:drawableStart="@drawable/account"
+                android:drawableStart="@drawable/plus"
                 android:drawableEnd="@drawable/right_arrow"
                 android:drawablePadding="10dp"
                 android:text="Add Product"
@@ -216,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_background"
-                android:drawableStart="@drawable/account"
+                android:drawableStart="@drawable/notificationn"
                 android:drawableEnd="@drawable/right_arrow"
                 android:drawablePadding="10dp"
                 android:text="Notification"
@@ -225,64 +225,45 @@
                 android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/introductionBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_background"
-                android:drawableStart="@drawable/account"
+                android:drawableStart="@drawable/intro"
                 android:drawableEnd="@drawable/right_arrow"
                 android:drawablePadding="10dp"
-                android:text="Account Information"
+                android:text="Introduction"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/privacyPolicyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_background"
-                android:drawableStart="@drawable/account"
+                android:drawableStart="@drawable/policy"
                 android:drawableEnd="@drawable/right_arrow"
                 android:drawablePadding="10dp"
-                android:text="Account Information"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/btn_background"
-                android:drawableStart="@drawable/account"
-                android:drawableEnd="@drawable/right_arrow"
-                android:drawablePadding="10dp"
-                android:text="Account Information"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/btn_background"
-                android:drawableStart="@drawable/account"
-                android:drawableEnd="@drawable/right_arrow"
-                android:drawablePadding="10dp"
-                android:text="Account Information"
+                android:text="Privacy Policy"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/logoutBtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="50dp"
-                android:backgroundTint="#ffffff"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_background"
+                android:drawableStart="@drawable/logout"
+                android:drawableEnd="@drawable/right_arrow"
                 android:drawablePadding="10dp"
                 android:text="Log out"
+                android:textAlignment="viewStart"
                 android:textAllCaps="false"
-                android:visibility="gone" />
+                android:visibility="gone"/>
+
         </LinearLayout>
     </ScrollView>
     <!--    <Button-->

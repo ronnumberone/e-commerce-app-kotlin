@@ -1,6 +1,7 @@
 package com.example.googleauthlogin.database
 
 import android.util.Log
+import android.widget.Toast
 import com.example.googleauthlogin.model.CartItem
 import com.example.googleauthlogin.model.Order
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +21,7 @@ class OrderHelper {
         val orderId = db.push().key
         val userId = currentUser?.uid
         val dbPendingRef = db.child("pending").child(orderId!!)
+        Log.d("haha", "gdsfgd")
         val order = Order(orderId, userId, receiverName, address, email, phoneNumber, totalPayment, null)
         dbPendingRef.setValue(order)
             .addOnSuccessListener {
@@ -104,7 +106,7 @@ class OrderHelper {
     fun getAllShippingOrder(callback: (ArrayList<Order>) -> Unit) {
         val list: ArrayList<Order> = ArrayList()
 
-        val dbPendingRef = db.child("pending")
+        val dbPendingRef = db.child("shipping")
         dbPendingRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {

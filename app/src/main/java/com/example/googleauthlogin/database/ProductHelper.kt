@@ -56,6 +56,28 @@ class ProductHelper {
         })
     }
 
+    fun getProductsByCategory(category: String, callback: (ArrayList<Product>) -> Unit) {
+        db.orderByChild("category").equalTo(category)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val productList = ArrayList<Product>()
+                    for (productSnapshot in snapshot.children) {
+                        val product = productSnapshot.getValue(Product::class.java)
+                        product?.let {
+                            productList.add(it)
+                        }
+                    }
+                    callback(productList)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Xử lý khi truy vấn bị hủy bỏ
+                    Log.e("ProductHelper", "Error getting products by category", error.toException())
+                }
+            })
+    }
+
+
     fun deleteProduct(productId: String) {
            db.child(productId).removeValue()
                .addOnSuccessListener {

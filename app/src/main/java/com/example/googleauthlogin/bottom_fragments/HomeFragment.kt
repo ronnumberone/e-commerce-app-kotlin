@@ -87,12 +87,9 @@ class HomeFragment : Fragment() {
                 // Xử lý tìm kiếm khi người dùng nhấn nút tìm kiếm trên bàn phím hoặc trong giao diện SearchView
                 if (!query.isNullOrBlank()) {
                     productHelper.searchForProduct(query) { list ->
-//                        val adapt = ProductAdapter(list)
-//                        Toast.makeText(requireContext(), list!!.size.toString(), Toast.LENGTH_LONG).show()
-//                        binding.rvProduct.adapter = adapt
-                        val productList: ArrayList<Product> = list
                         val intent = Intent(requireContext(), SearchActivity::class.java)
-                        intent.putExtra("productList", productList)
+                        intent.putExtra("productList", list)
+                        intent.putExtra("keywordSearch", query)
                         startActivity(intent)
                     }
                 }
@@ -104,6 +101,32 @@ class HomeFragment : Fragment() {
             }
         })
 
+        setCategoryOnClick()
+
         return view
     }
+
+    private fun setCategoryOnClick() {
+        binding.glassesBtn.setOnClickListener { onCategoryButtonClick(binding.glassesBtn.text.toString()) }
+        binding.bagBtn.setOnClickListener { onCategoryButtonClick(binding.bagBtn.text.toString()) }
+        binding.dressesBtn.setOnClickListener { onCategoryButtonClick(binding.dressesBtn.text.toString()) }
+        binding.pantBtn.setOnClickListener { onCategoryButtonClick(binding.pantBtn.text.toString()) }
+        binding.jeansBtn.setOnClickListener { onCategoryButtonClick(binding.jeansBtn.text.toString()) }
+        binding.shirtBtn.setOnClickListener { onCategoryButtonClick(binding.shirtBtn.text.toString()) }
+        binding.shoesBtn.setOnClickListener { onCategoryButtonClick(binding.shoesBtn.text.toString()) }
+        binding.shortBtn.setOnClickListener { onCategoryButtonClick(binding.shortBtn.text.toString()) }
+        binding.sportBtn.setOnClickListener { onCategoryButtonClick(binding.sportBtn.text.toString()) }
+        binding.sweaterBtn.setOnClickListener { onCategoryButtonClick(binding.sweaterBtn.text.toString()) }
+    }
+
+    private fun onCategoryButtonClick(category: String) {
+        productHelper.getProductsByCategory(category) { list ->
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            intent.putExtra("productList", list)
+            intent.putExtra("keywordSearch", category)
+            startActivity(intent)
+        }
+    }
+
+
 }

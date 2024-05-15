@@ -82,6 +82,7 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/bagBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -93,6 +94,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/dressesBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -104,6 +106,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/glassesBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -116,6 +119,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/pantBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -127,6 +131,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/jeansBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -146,6 +151,7 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/shirtBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -157,6 +163,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/shoesBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -168,6 +175,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/shortBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -180,6 +188,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sportBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -191,6 +200,7 @@
                         android:textAllCaps="false" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sweaterBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"

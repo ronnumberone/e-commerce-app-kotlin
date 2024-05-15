@@ -12,9 +12,11 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.googleauthlogin.IntroductionActivity
 import com.example.googleauthlogin.admin.AddProductActivity
 import com.example.googleauthlogin.MainActivity
 import com.example.googleauthlogin.PendingActivity
+import com.example.googleauthlogin.PrivacyPolicyActivity
 import com.example.googleauthlogin.admin.ProductManagementActivity
 import com.example.googleauthlogin.R
 import com.example.googleauthlogin.ShippingActivity
@@ -39,7 +41,6 @@ class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var userHelper: UserHelper
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -102,6 +103,14 @@ class ProfileFragment : Fragment() {
 
         binding.shippingBtn.setOnClickListener {
             startActivity(Intent(requireContext(), ShippingActivity::class.java))
+        }
+
+        binding.privacyPolicyBtn.setOnClickListener {
+            startActivity(Intent(requireContext(), PrivacyPolicyActivity::class.java))
+        }
+
+        binding.introductionBtn.setOnClickListener {
+            startActivity(Intent(requireContext(), IntroductionActivity::class.java))
         }
 
         if (user != null) {

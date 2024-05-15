@@ -7,9 +7,11 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.googleauthlogin.R
 import com.example.googleauthlogin.model.CartItem
@@ -20,7 +22,7 @@ class CartItemAdapter (var list:ArrayList<CartItem>) : RecyclerView.Adapter<Cart
     private var clickListener: onClickListener? = null
 
     interface onClickListener {
-        fun onDeleteClick(id: String)
+        fun onDeleteClick(cartItemId: String)
     }
 
     fun setOnClickListener(listener: onClickListener) {
@@ -28,14 +30,41 @@ class CartItemAdapter (var list:ArrayList<CartItem>) : RecyclerView.Adapter<Cart
     }
 
     fun calculateTotalPrice(): Double {
-        var totalPrice: Double = 0.0
+        var totalPrice = 0.0
         for (item in list) {
             totalPrice += item.cartItemCost * item.quantity
         }
         return totalPrice
     }
 
-    inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        init {
+            itemView.findViewById<ImageButton>(R.id.deleteCartItemBtn).setOnClickListener {
+                val cartItemId = list[adapterPosition].cartItemId
+                list.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
+                clickListener?.onDeleteClick(cartItemId)
+            }
+
+            val plusBtn = itemView.findViewById<AppCompatImageButton>(R.id.plusBtn)
+            val minusBtn = itemView.findViewById<AppCompatImageButton>(R.id.minusBtn)
+            val quantityTv = itemView.findViewById<TextView>(R.id.quantityTv)
+
+            plusBtn.setOnClickListener {
+                if (quantityTv.text.toString().toInt() < 99) {
+                    val currentQuantity = quantityTv.text.toString().toInt() + 1
+                    quantityTv.text = currentQuantity.toString()
+                }
+            }
+
+            minusBtn.setOnClickListener {
+                if (quantityTv.text.toString().toInt() > 1) {
+                    val currentQuantity = quantityTv.text.toString().toInt() - 1
+                    quantityTv.text = currentQuantity.toString()
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)

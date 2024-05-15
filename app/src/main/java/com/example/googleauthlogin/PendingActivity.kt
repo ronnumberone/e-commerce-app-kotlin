@@ -33,6 +33,7 @@ class PendingActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("loadFragment", "profileFragment")
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
 
@@ -61,11 +62,11 @@ class PendingActivity : AppCompatActivity() {
             }
         }
 
-        orderHelper.getPendingOrder { list ->
-            binding.rvOrder.layoutManager = GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false)
-            binding.rvOrder.setHasFixedSize(true)
-            val adapt = OrderItemAdapter(list)
-            binding.rvOrder.adapter = adapt
-        }
+//        orderHelper.getPendingOrder { list ->
+//            binding.rvOrder.layoutManager = GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false)
+//            binding.rvOrder.setHasFixedSize(true)
+//            val adapt = OrderItemAdapter(list)
+//            binding.rvOrder.adapter = adapt
+//        }
     }
 }

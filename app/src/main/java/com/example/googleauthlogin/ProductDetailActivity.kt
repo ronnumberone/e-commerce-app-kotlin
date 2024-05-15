@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import com.example.googleauthlogin.bottom_fragments.CartFragment
 import com.example.googleauthlogin.database.UserHelper
 import com.example.googleauthlogin.databinding.ActivityMainBinding
@@ -25,12 +26,12 @@ class ProductDetailActivity : AppCompatActivity() {
 
         userHelper = UserHelper()
 
-        var productId = intent.getStringExtra("productId")
-        var productName = intent.getStringExtra("productName")
-        var productCost = intent.getDoubleExtra("productCost", 0.0)
-        var productDescription = intent.getStringExtra("productDescription")
-        var category = intent.getStringExtra("category")
-        var productImg = intent.getStringExtra("productImg")
+        val productId = intent.getStringExtra("productId")
+        val productName = intent.getStringExtra("productName")
+        val productCost = intent.getDoubleExtra("productCost", 0.0)
+        val productDescription = intent.getStringExtra("productDescription")
+        val category = intent.getStringExtra("category")
+        val productImg = intent.getStringExtra("productImg")
         val createAt = intent.getLongExtra("createAt", 0)
         var quantity = binding.quantityTv.text.toString().toInt()
 
@@ -52,8 +53,15 @@ class ProductDetailActivity : AppCompatActivity() {
 
         binding.addToCartBtn.setOnClickListener {
             userHelper.addToCart(productId!!, productName!!, productImg!!, productCost, quantity)
-            startActivity(Intent(this, MainActivity::class.java))
+//            val intent = Intent(this, MainActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(intent)
             finish()
+        }
+
+        binding.favoriteBtn.setOnClickListener {
+            userHelper.addToFavorite(productId!!, productName!!, productCost, productDescription!!, category!!, productImg!!, createAt)
+            Toast.makeText(this, "Added to favorite", Toast.LENGTH_SHORT).show()
         }
 
         binding.backBtn.setOnClickListener {
